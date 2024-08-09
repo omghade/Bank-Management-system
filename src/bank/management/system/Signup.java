@@ -1,12 +1,18 @@
 package bank.management.system;
 
+import com.toedter.calendar.JDateChooser;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.Random;
 
 public class Signup extends JFrame
 {
-    JTextField textname,textFname;
+    JTextField textname,textFname,textEmail,textMS;
+
+    JDateChooser dateChooser;
+
+    JRadioButton r1,r2,r3;
 
 
     // Global var rand to generate the Random Digit as a forn number --->
@@ -62,20 +68,95 @@ public class Signup extends JFrame
         // father''s Name Label
         JLabel labelFatherName = new JLabel("Father's Name : ");
         labelFatherName.setFont(new Font("Raleway",Font.BOLD,20));
-        labelFatherName.setBounds(100,235,200,30);
+        labelFatherName.setBounds(100,240,200,30);
         add(labelFatherName);
 
         // Father's Name TextField --->
         textFname = new JTextField();
         textFname.setFont(new Font("Raleway",Font.BOLD,14));
-        textFname.setBounds(300,235,400,30);
+        textFname.setBounds(300,240,400,30);
         add(textFname);
 
+        // DOB Label --->
+        JLabel DOB = new JLabel("Date Of Birth : ");
+        DOB.setFont(new Font("Raleway",Font.BOLD,20));
+        DOB.setBounds(100,290,200,30);
+        add(DOB);
+
+        // added date chooser from external JAR file --->
+        dateChooser = new JDateChooser();
+        dateChooser.setForeground(new Color(105,105,105));
+        dateChooser.setBounds(300,290,400,30);
+        add(dateChooser);
+
+        // Gender Label --->
+        JLabel labelGender = new JLabel("Gender : ");
+        labelGender.setFont(new Font("Raleway",Font.BOLD,20));
+        labelGender.setBounds(100,340,200,30);
+        add(labelGender);
+
+        // Male Button created
+        r1 = new JRadioButton("Male");
+        r1.setBackground(new Color(186, 166, 160));
+        r1.setFont(new Font("Raleway",Font.BOLD,14));
+        r1.setBounds(300,340,90,30);
+        add(r1);
+
+        // Female Button Created
+        r2 = new JRadioButton("Female");
+        r2.setBackground(new Color(186, 166, 160));
+        r2.setFont(new Font("Raleway",Font.BOLD,14));
+        r2.setBounds(440,340,90,30);
+        add(r2);
+
+        // Non-Binary Button Created
+        r3 = new JRadioButton("Non-Binary");
+        r3.setBackground(new Color(186, 166, 160));
+        r3.setFont(new Font("Raleway",Font.BOLD,14));
+        r3.setBounds(580,340,120,30);
+        add(r3);
+
+
+        //Button Group--->
+        ButtonGroup buttonGroup = new ButtonGroup();
+        buttonGroup.add(r1);
+        buttonGroup.add(r2);
+        buttonGroup.add(r3);
+
+        // Email Label --->
+        JLabel labelEmail = new JLabel("Email ID : ");
+        labelEmail.setFont(new Font("Raleway",Font.BOLD,20));
+        labelEmail.setBounds(100,390,200,30);
+        add(labelEmail);
+
+
+        // Email TextField --->
+        textEmail = new JTextField();
+        textEmail.setFont(new Font("Raleway",Font.BOLD,14));
+        textEmail.setBounds(300,390,400,30);
+        add(textEmail);
+
+
+        // Marital Status Label --->
+        JLabel labelMS = new JLabel("Marital Status : ");
+        labelMS.setFont(new Font("Raleway",Font.BOLD,20));
+        labelMS.setBounds(100,440,200,30);
+        add(labelMS);
+
+
+        // Marital Status TextField --->
+        textMS = new JTextField();
+        textMS.setFont(new Font("Raleway",Font.BOLD,14));
+        textMS.setBounds(300,440,400,30);
+        add(textMS);
 
 
 
 
 
+
+
+        // created signup page
         getContentPane().setBackground(new Color(186, 166, 160));
         setLayout(null);
         setSize(850,800);
