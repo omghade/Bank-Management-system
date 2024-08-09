@@ -2,8 +2,10 @@ package bank.management.system;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class Login extends JFrame
+public class Login extends JFrame implements ActionListener
 {
     // jlabel for text
     JLabel label1,label2,label3;
@@ -11,6 +13,8 @@ public class Login extends JFrame
     JTextField textField2;
     // for password
     JPasswordField passwordField3;
+    // to add Buttons
+    JButton button1,button2,button3;
 
     Login()
     {
@@ -67,8 +71,34 @@ public class Login extends JFrame
         passwordField3.setFont(new Font("Arial",Font.BOLD,14));
         add(passwordField3);
 
+        // Sign IN - Button created
+        button1 = new JButton("Sign In");
+        button1.setFont(new Font("Arial",Font.BOLD,14));
+        button1.setForeground(Color.WHITE);
+        button1.setBackground(Color.BLACK);
+        button1.setBounds(325,300,100,30);
+        button1.addActionListener(this);
+        add(button1);
 
-        
+
+        // Clear Button ---->
+        button2 = new JButton("CLEAR");
+        button2.setFont(new Font("Arial",Font.BOLD,14));
+        button2.setForeground(Color.WHITE);
+        button2.setBackground(Color.BLACK);
+        button2.setBounds(455,300,100,30);
+        button2.addActionListener(this);
+        add(button2);
+
+
+        //Sign UP Button --->
+        button3 = new JButton("SIGN UP");
+        button3.setFont(new Font("Arial",Font.BOLD,14));
+        button3.setForeground(Color.WHITE);
+        button3.setBackground(Color.BLACK);
+        button3.setBounds(325,350,230,30);
+        button3.addActionListener(this);
+        add(button3);
 
 
 
@@ -82,23 +112,42 @@ public class Login extends JFrame
 
 
 
-
-
-
-
-
         // programme window created
         setLayout(null);
         setSize(850,500);
         setLocation(450,200);
         setVisible(true);
 
-
-
     }
 
+    @Override
+    public void actionPerformed(ActionEvent e)
+    {
+        try
+        {
+            if(e.getSource()==button1)
+            {
 
-    public static void main(String[] args) {
+            }
+            else if(e.getSource()==button2)
+            {
+                textField2.setText("");
+                passwordField3.setText("");
+            }
+            else if(e.getSource()==button3)
+            {
+
+            }
+        }
+        catch (Exception ex)
+        {
+            ex.printStackTrace();
+        }
+    }
+
+    public static void main(String[] args)
+    {
         new Login();
+
     }
 }
