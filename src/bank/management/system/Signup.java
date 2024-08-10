@@ -4,16 +4,19 @@ import com.toedter.calendar.JDateChooser;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Random;
 
-public class Signup extends JFrame
+public class Signup extends JFrame implements ActionListener
 {
-    JTextField textname,textFname,textEmail,textMS;
+    JTextField textname,textFname,textEmail,textAdd,textCity,textPincode,textState;
 
     JDateChooser dateChooser;
 
-    JRadioButton r1,r2,r3;
+    JRadioButton r1,r2,r3,m1,m2,m3,m4;
 
+    JButton next;
 
     // Global var rand to generate the Random Digit as a forn number --->
     Random rand = new Random();
@@ -117,11 +120,11 @@ public class Signup extends JFrame
         add(r3);
 
 
-        //Button Group--->
-        ButtonGroup buttonGroup = new ButtonGroup();
-        buttonGroup.add(r1);
-        buttonGroup.add(r2);
-        buttonGroup.add(r3);
+        //Button Group1 --->
+        ButtonGroup buttonGroup1 = new ButtonGroup();
+        buttonGroup1.add(r1);
+        buttonGroup1.add(r2);
+        buttonGroup1.add(r3);
 
         // Email Label --->
         JLabel labelEmail = new JLabel("Email ID : ");
@@ -143,12 +146,103 @@ public class Signup extends JFrame
         labelMS.setBounds(100,440,200,30);
         add(labelMS);
 
+        // Marital Status Button created--->
+        // Married
+        m1 = new JRadioButton("Married");
+        m1.setBackground(new Color(186, 166, 160));
+        m1.setFont(new Font("Raleway",Font.BOLD,14));
+        m1.setBounds(300,440,90,30);
+        add(m1);
 
-        // Marital Status TextField --->
-        textMS = new JTextField();
-        textMS.setFont(new Font("Raleway",Font.BOLD,14));
-        textMS.setBounds(300,440,400,30);
-        add(textMS);
+        // Unmarried Button Created
+        m2 = new JRadioButton("Unmarried");
+        m2.setBackground(new Color(186, 166, 160));
+        m2.setFont(new Font("Raleway",Font.BOLD,14));
+        m2.setBounds(390,440,110,30);
+        add(m2);
+
+        // Widowed Button Created
+        m3 = new JRadioButton("Widowed");
+        m3.setBackground(new Color(186, 166, 160));
+        m3.setFont(new Font("Raleway",Font.BOLD,14));
+        m3.setBounds(500,440,100,30);
+        add(m3);
+
+        // Divrced Button Created
+        m4 = new JRadioButton("Divorced");
+        m4.setBackground(new Color(186, 166, 160));
+        m4.setFont(new Font("Raleway",Font.BOLD,14));
+        m4.setBounds(600,440,120,30);
+        add(m4);
+
+        //Button Group2 --->
+        ButtonGroup buttonGroup2 = new ButtonGroup();
+        buttonGroup2.add(m1);
+        buttonGroup2.add(m2);
+        buttonGroup2.add(m3);
+        buttonGroup2.add(m4);
+
+        // NEXT Page Button --->
+        next = new JButton("NEXT");
+        next.setFont(new Font("Raleway",Font.BOLD,14));
+        next.setBackground(Color.BLACK);
+        next.setForeground(Color.WHITE);
+        next.setBounds(620,710,80,30);
+        next.addActionListener(this);
+        add(next);
+
+
+        // Adress Label --->
+        JLabel labelAdd = new JLabel("Adress : ");
+        labelAdd.setFont(new Font("Raleway",Font.BOLD,20));
+        labelAdd.setBounds(100,490,200,30);
+        add(labelAdd);
+
+        // City TextField --->
+        textAdd = new JTextField();
+        textAdd.setFont(new Font("Raleway",Font.BOLD,14));
+        textAdd.setBounds(300,490,400,30);
+        add(textAdd);
+
+
+        // City Label --->
+        JLabel labelCity = new JLabel("City : ");
+        labelCity.setFont(new Font("Raleway",Font.BOLD,20));
+        labelCity.setBounds(100,540,200,30);
+        add(labelCity);
+
+        // Adress TextField --->
+        textCity = new JTextField();
+        textCity.setFont(new Font("Raleway",Font.BOLD,14));
+        textCity.setBounds(300,540,400,30);
+        add(textCity);
+
+        // Pincode Label --->
+        JLabel labelPincode = new JLabel("Pincode : ");
+        labelPincode.setFont(new Font("Raleway",Font.BOLD,20));
+        labelPincode.setBounds(100,590,200,30);
+        add(labelPincode);
+
+        // Pincode TextField --->
+        textPincode = new JTextField();
+        textPincode.setFont(new Font("Raleway",Font.BOLD,14));
+        textPincode.setBounds(300,590,400,30);
+        add(textPincode);
+
+        // State Label --->
+        JLabel labelState = new JLabel("State : ");
+        labelState.setFont(new Font("Raleway",Font.BOLD,20));
+        labelState.setBounds(100,640,200,30);
+        add(labelState);
+
+        // State TextField --->
+        textState = new JTextField();
+        textState.setFont(new Font("Raleway",Font.BOLD,14));
+        textState.setBounds(300,640,400,30);
+        add(textState);
+
+
+
 
 
 
@@ -162,6 +256,11 @@ public class Signup extends JFrame
         setSize(850,800);
         setLocation(360,40);
         setVisible(true);
+
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
 
     }
 
