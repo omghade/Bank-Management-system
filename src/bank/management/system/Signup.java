@@ -7,6 +7,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
+import java.sql.Statement;
 
 public class Signup extends JFrame implements ActionListener
 {
@@ -168,7 +169,7 @@ public class Signup extends JFrame implements ActionListener
         m3.setBounds(500,440,100,30);
         add(m3);
 
-        // Divrced Button Created
+        // Divorced Button Created
         m4 = new JRadioButton("Divorced");
         m4.setBackground(new Color(186, 166, 160));
         m4.setFont(new Font("Raleway",Font.BOLD,14));
@@ -260,7 +261,65 @@ public class Signup extends JFrame implements ActionListener
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(ActionEvent e)
+    {
+        // To get the data Filled on the Signup Page --->
+        String formno = first;
+        String name = textname.getText();
+        String fName = textname.getText();
+        String dob = ((JTextField)dateChooser.getDateEditor().getUiComponent()).getText();
+        // radio button for gender -->
+        String gender = null;
+        if(r1.isSelected())
+        {
+            gender = "Male";
+        }else if (r2.isSelected())
+        {
+            gender = "Female";
+        }else
+        {
+            gender = "Non-Binary";
+        }
+        String email = textEmail.getText();
+        //radio button for marital status
+        String maritalStatus = null;
+        if(m1.isSelected())
+        {
+            maritalStatus = "Married";
+        }else if (m2.isSelected())
+        {
+            maritalStatus = "Unmarried";
+        }else if (m3.isSelected())
+        {
+            maritalStatus = "Widowed";
+        }else
+        {
+            maritalStatus = "Divorced";
+        }
+        
+        String adress = textAdd.getText();
+        String city = textCity.getText();
+        String pincode = textPincode.getText();
+        String state = textState.getText();
+
+        try
+        {
+            if(textname.getText().isEmpty())
+            {
+                JOptionPane.showMessageDialog(null,"Fill all the fields");
+            }else
+            {
+                Con conn1 = new Con();
+                String q = "insert into signup values('"+formno+"','"+name+"','"+fName+"','"+dob+"','"+gender+"','"+email+"','"+maritalStatus+"','"+adress+"','"+city+"','"+pincode+"','"+state+"')";
+                conn1.statement.executeUpdate(q);
+                new Signup02(first);
+                setVisible(false);
+
+            }
+        }catch (Exception E)
+        {
+            E.printStackTrace();
+        }
 
     }
 
