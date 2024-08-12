@@ -4,8 +4,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
-public class Signup02 extends JFrame
+public class Signup02 extends JFrame implements ActionListener
 {
     JComboBox comboBox,comboBox2,comboBox3,comboBox4,comboBox5;
 
@@ -17,7 +19,7 @@ public class Signup02 extends JFrame
 
     String formno;
 
-    Signup02(String first)
+    Signup02(String formno)
     {
         super("APPLICATO FORM");
 
@@ -51,7 +53,7 @@ public class Signup02 extends JFrame
         // Reliigion Dropdown Menu
         String religion[] = {"Hindu","Muslim","Sikh","Christain","Other"};
         comboBox = new JComboBox(religion);
-        comboBox.setBackground(new Color(204, 159, 108);
+        comboBox.setBackground(new Color(204, 159, 108));
         comboBox.setFont(new Font("Raleway",Font.BOLD,16));
         comboBox.setBounds(350,140,320,25);
         add(comboBox);
@@ -207,14 +209,15 @@ public class Signup02 extends JFrame
     }
     @Override
     public void actionPerformed(ActionEvent e) {
+        // String Names
         String rel = (String) comboBox.getSelectedItem();
         String cate = (String) comboBox2.getSelectedItem();
         String inc = (String) comboBox3.getSelectedItem();
         String edu = (String) comboBox4.getSelectedItem();
         String occ = (String) comboBox5.getSelectedItem();
 
-        String pan = textPan.getText();
-        String addhar = textAadhar.getText();
+        String pan = textPAN.getText();
+        String addhar = textAad.getText();
 
         String scitizen = " ";
         if ((r1.isSelected())){
@@ -229,23 +232,34 @@ public class Signup02 extends JFrame
             eAccount ="No";
         }
 
-        try{
-            if (textPAN.getText().equals("") || textAad.getText().equals("")){
-                JOptionPane.showMessageDialog(null,"Fill all the fields");
-            }else {
-                Connn c = new Connn();
-                String q = "insert into Signuptwo values('"+formno+"', '"+rel+"', '"+cate+"','"+inc+"','"+edu+"','"+occ+"','"+pan+"','"+addhar+"','"+scitizen+"','"+eAccount+"')";
-                c.statement.executeUpdate(q);
-                new Signup3(formno);
+        try {
+            if (textPAN.getText().equals("") || textAad.getText().equals("")) {
+                JOptionPane.showMessageDialog(null, "Fill all the fields");
+            } else {
+                Con c = new Con();
+                String q = "INSERT INTO signuptwo VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                PreparedStatement pstmt = c.connection.prepareStatement(q);
+                pstmt.setString(1, formno);
+                pstmt.setString(2, rel);
+                pstmt.setString(3, cate);
+                pstmt.setString(4, inc);
+                pstmt.setString(5, edu);
+                pstmt.setString(6, occ);
+                pstmt.setString(7, pan);
+                pstmt.setString(8, addhar);
+                pstmt.setString(9, scitizen);
+                pstmt.setString(10, eAccount);
+                pstmt.executeUpdate();
+                new Signup03(formno);
                 setVisible(false);
             }
-
-
-        }catch (Exception E){
+        } catch (SQLException sqlEx) {
+            JOptionPane.showMessageDialog(null, "Database error: " + sqlEx.getMessage());
+            sqlEx.printStackTrace();
+        } catch (Exception E) {
+            JOptionPane.showMessageDialog(null, "An error occurred: " + E.getMessage());
             E.printStackTrace();
         }
-
-
     }
 
 

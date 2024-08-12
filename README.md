@@ -1,25 +1,20 @@
-# Project Name
+# Bank Management System	
 
-Brief description of your project.
+Bank Management System made using Java and JDBC 
 
 ## Features
 
-- Feature 1
-- Feature 2
-- Feature 3
+- Create new account
+- ATM dashboard
+- Secure
 
 ## Installation
 
-Instructions on how to install and setup your project.
+can be run on your system by cloning  project into your local machine.
 
 ## Usage
 
-Examples of how to use your project.
+this application can be used for the account creation and management of other banking related services online completely digitally.
 
-## Contributing
 
-Guidelines for contributing to your project.
 
-## License
-
-Information about the license.
